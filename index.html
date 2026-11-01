@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transact & Etelia Core OS - Showcase</title>
+    <!-- ULMA Shield: Anti-Debug & Protection Script -->
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || (event.ctrlKey && event.key === 'U')) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
+    <style>
+        :root {
+            --bg-main: #07090e;
+            --panel-bg: #0f172a;
+            --accent: #00f2fe;
+            --shield-green: #10b981;
+            --vpn-purple: #a855f7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(0, 242, 254, 0.2);
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            user-select: none;
+        }
+        .topbar {
+            background: #020617;
+            height: 52px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .brand { font-weight: 700; color: var(--accent); display: flex; align-items: center; gap: 12px; }
+        .author-tag { background: rgba(0, 242, 254, 0.1); color: var(--accent); font-size: 0.75rem; padding: 3px 10px; border-radius: 12px; border: 1px solid var(--accent); }
+        .header-lang-switcher { display: flex; align-items: center; gap: 6px; background: rgba(0, 242, 254, 0.05); border: 1px solid var(--border-color); padding: 4px 10px; border-radius: 8px; }
+        .header-lang-switcher select { background: transparent; color: var(--accent); border: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; outline: none; }
+        .header-lang-switcher select option { background: #0f172a; color: #f8fafc; }
+        .workspace-main { flex: 1; display: grid; grid-template-columns: 340px 1fr 320px; gap: 1px; background: rgba(255, 255, 255, 0.05); overflow: hidden; }
+        .panel { background: var(--panel-bg); padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; max-height: calc(100vh - 84px); }
+        .panel-title { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin: 0 0 8px 0; }
+        .sales-box { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; }
+        .btn-sales { width: 100%; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; font-weight: 700; border: none; padding: 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s; margin-top: 8px; text-decoration: none; display: block; text-align: center; }
+        .btn-sales:hover { transform: translateY(-2px); box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+        .btn-paypal { background: linear-gradient(135deg, #0070ba 0%, #003087 100%); margin-top: 6px; }
+        .central-canvas { background: #020617; display: flex; flex-direction: column; padding: 20px; gap: 20px; }
+        .terminal-window { flex: 1; background: #000; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: #34d399; overflow-y: auto; }
+        .terminal-line { margin-bottom: 6px; }
+        .prompt-symbol { color: var(--accent); }
+        footer { height: 32px; background: #020617; border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 0.75rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="brand">
+            <span data-i18n="title">Transact & Etelia Core OS</span>
+            <span class="author-tag" data-i18n="author">Architetta: Tiziana Maggio</span>
+        </div>
+        <div class="header-lang-switcher">
+            <span style="font-size: 0.75rem; color: var(--text-muted);" data-i18n="lang_label">🌐 Lang:</span>
+            <select id="globalLocaleSelect" onchange="changeLocale()">
+                <option value="it">🇮🇹 Italiano</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="en">🇺🇸 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="de">🇩🇪 Deutsch</option>
+                <option value="pt">🇵🇹 Português</option>
+                <option value="ru">🇷🇺 Русский</option>
+                <option value="ja">🇯🇵 日本語</option>
+                <option value="zh">🇨🇳 中文</option>
+                <option value="ar">🇸🇦 العربية</option>
+            </select>
+        </div>
+        <div style="color: var(--shield-green); font-size: 0.85rem;" data-i18n="shield_badge">🔒 ULMA Shield Active</div>
+    </div>
+
+    <div class="workspace-main">
+        <div class="panel">
+            <h3 class="panel-title" data-i18n="license_title">Licenza & Contatti</h3>
+            <div class="sales-box">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0;" data-i18n="license_desc">Vuoi la licenza Enterprise per la tua azienda o organizzazione? Contatta direttamente l'architetta.</p>
+                <a href="mailto:devlabsolutionstm888@gmail.com?subject=Richiesta%20Licenza%20Transact%20Etelia%20Core%20OS" class="btn-sales" data-i18n="btn_email">📧 Invia Email</a>
+                <a href="https://www.paypal.me/tizianaM383" target="_blank" class="btn-sales btn-paypal" data-i18n="btn_paypal">💳 Paga via PayPal.me</a>
+            </div>
+        </div>
+
+        <div class="central-canvas">
+            <h3 class="panel-title" style="margin: 0;" data-i18n="terminal_title">Showcase Live Terminal</h3>
+            <div class="terminal-window" id="terminalLog">
+                <div class="terminal-line"><span class="prompt-symbol">[Showcase]</span> Transact & Etelia Core OS v4.2 Public Preview Online.</div>
+                <div class="terminal-line"><span class="prompt-symbol">[ULMA Shield]</span> Anti-reverse engineering & F12 inspection blocks active.</div>
+                <div class="terminal-line" style="color: var(--accent);"><span class="prompt-symbol">[Direct Sales]</span> Contact: devlabsolutionstm888@gmail.com | PayPal: paypal.me/tizianaM383</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h3 class="panel-title" data-i18n="specs_title">Specifiche Architetturali</h3>
+            <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 6px; font-size: 0.85rem; line-height: 1.5;" data-i18n="specs_body">
+                • Zero Telemetria & Offline-First<br>
+                • Worldwide Engine (10 Lingue)<br>
+                • ULMA VPN Multi-Hop Routing<br>
+                • Proprietà Intellettuale: Tiziana Maggio
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <span data-i18n="footer_copy">Copyright © 2026 Tiziana Maggio. All Rights Reserved.</span>
+        <span>Secured via ULMA Core</span>
+    </footer>
+
+    <script>
+        const i18nData = {
+            it: {
+                title: "Transact & Etelia Core OS", author: "Architetta: Tiziana Maggio", lang_label: "🌐 Lingua:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Licenza & Contatti",
+                license_desc: "Vuoi la licenza Enterprise per la tua azienda o organizzazione? Contatta direttamente l'architetta.",
+                btn_email: "📧 Invia Email", btn_paypal: "💳 Paga via PayPal.me", terminal_title: "Showcase Live Terminal",
+                specs_title: "Specifiche Architetturali", footer_copy: "Copyright © 2026 Tiziana Maggio. All Rights Reserved."
+            },
+            es: {
+                title: "Transact & Etelia Core OS", author: "Arquitecta: Tiziana Maggio", lang_label: "🌐 Idioma:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Licencia y Contacto",
+                license_desc: "¿Deseas la licencia Enterprise para tu empresa u organización? Contacta directamente a la arquitecta.",
+                btn_email: "📧 Enviar Email", btn_paypal: "💳 Pagar vía PayPal.me", terminal_title: "Terminal en Vivo",
+                specs_title: "Especificaciones", footer_copy: "Copyright © 2026 Tiziana Maggio. Todos los derechos reservados."
+            },
+            en: {
+                title: "Transact & Etelia Core OS", author: "Architect: Tiziana Maggio", lang_label: "🌐 Lang:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "License & Contact",
+                license_desc: "Want the Enterprise license for your company or organization? Contact the architect directly.",
+                btn_email: "📧 Send Email", btn_paypal: "💳 Pay via PayPal.me", terminal_title: "Showcase Live Terminal",
+                specs_title: "Architectural Specs", footer_copy: "Copyright © 2026 Tiziana Maggio. All Rights Reserved."
+            },
+            fr: {
+                title: "Transact & Etelia Core OS", author: "Architecte : Tiziana Maggio", lang_label: "🌐 Langue :",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Licence & Contact",
+                license_desc: "Vous souhaitez une licence Enterprise pour votre entreprise ? Contactez directement l'architecte.",
+                btn_email: "📧 Envoyer un Email", btn_paypal: "💳 Payer via PayPal.me", terminal_title: "Terminal en Direct",
+                specs_title: "Spécifications", footer_copy: "Copyright © 2026 Tiziana Maggio. Tous droits réservés."
+            },
+            de: {
+                title: "Transact & Etelia Core OS", author: "Architektin: Tiziana Maggio", lang_label: "🌐 Sprache:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Lizenz & Kontakt",
+                license_desc: "Möchten Sie eine Enterprise-Lizenz für Ihr Unternehmen? Kontaktieren Sie die Architektin direkt.",
+                btn_email: "📧 E-Mail Senden", btn_paypal: "💳 Über PayPal.me Bezahlen", terminal_title: "Live-Terminal",
+                specs_title: "Architektur", footer_copy: "Copyright © 2026 Tiziana Maggio. Alle Rechte vorbehalten."
+            },
+            pt: {
+                title: "Transact & Etelia Core OS", author: "Arquiteta: Tiziana Maggio", lang_label: "🌐 Idioma:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Licença e Contato",
+                license_desc: "Deseja a licença Enterprise para sua empresa ou organização? Entre em contato diretamente com a arquiteta.",
+                btn_email: "📧 Enviar E-mail", btn_paypal: "💳 Pagar via PayPal.me", terminal_title: "Terminal ao Vivo",
+                specs_title: "Especificações", footer_copy: "Copyright © 2026 Tiziana Maggio. Todos os direitos reservados."
+            },
+            ru: {
+                title: "Transact & Etelia Core OS", author: "Архитектор: Тициана Маджо", lang_label: "🌐 Язык:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "Лицензия и Контакты",
+                license_desc: "Хотите корпоративную лицензию для вашей компании? Свяжитесь напрямую с архитектором.",
+                btn_email: "📧 Отправить Email", btn_paypal: "💳 Оплатить через PayPal.me", terminal_title: "Живой Терминал",
+                specs_title: "Характеристики", footer_copy: "Copyright © 2026 Tiziana Maggio. Все права защищены."
+            },
+            ja: {
+                title: "Transact & Etelia Core OS", author: "設計者: ティツィアーナ・マッジョ", lang_label: "🌐 言語:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "ライセンス & 連絡先",
+                license_desc: "企業向けエンタープライズライセンスが必要ですか？設計者に直接お問い合わせください。",
+                btn_email: "📧 メールを送信", btn_paypal: "💳 PayPal.meで支払う", terminal_title: "ライブターミナル",
+                specs_title: "アーキテクチャ仕様", footer_copy: "Copyright © 2026 Tiziana Maggio. 全著作権所有。"
+            },
+            zh: {
+                title: "Transact & Etelia Core OS", author: "架构师: 蒂齐亚纳·马乔", lang_label: "🌐 语言:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "许可证与联系方式",
+                license_desc: "需要为您公司获得企业版许可证吗？请直接联系架构师。",
+                btn_email: "📧 发送邮件", btn_paypal: "💳 通过 PayPal.me 支付", terminal_title: "实时终端",
+                specs_title: "架构规格", footer_copy: "Copyright © 2026 Tiziana Maggio. 保留所有权利。"
+            },
+            ar: {
+                title: "Transact & Etelia Core OS", author: "المهندسة المعمارية: تيزيانا ماجيو", lang_label: "🌐 اللغة:",
+                shield_badge: "🔒 ULMA Shield Active", license_title: "الترخيص والاتصال",
+                license_desc: "هل تريد ترخيص المؤسسات لشركتك أو مؤسستك؟ تواصل مباشرة مع المهندسة المعمارية.",
+                btn_email: "📧 إرسال بريد إلكتروني", btn_paypal: "💳 الدفع عبر PayPal.me", terminal_title: "محطة العرض المباشر",
+                specs_title: "المواصفات", footer_copy: "حقوق الطبع والنشر © 2026 تيزيانا ماجيو. جميع الحقوق محفوظة."
+            }
+        };
+
+        function changeLocale() {
+            const lang = document.getElementById('globalLocaleSelect').value;
+            const dict = i18nData[lang] || i18nData['it'];
+            document.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.innerText = dict[key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
