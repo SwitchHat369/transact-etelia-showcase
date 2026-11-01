@@ -1,20 +1,36 @@
-# transact-etelia-showcase
-Official public showcase of Transact &amp; Etelia Core OS – Sovereign Workspace &amp; Worldwide Engine.
 # Transact & Etelia Core OS - Official Public Showcase
 
-> **AUTORE E PROPRIETARIA INTELLETTUALE:** Tiziana Maggio  
-> **Tutti i diritti riservati.**
-
-## ⚠️ Avviso Legale e Protezione della Proprietà Intellettuale
-Questo software, l'architettura **Transact & Etelia Core OS**, il codice sorgente, i layout grafici, il protocollo **ULMA Shield** e il **Worldwide Engine** sono opera originale e proprietà esclusiva di **Tiziana Maggio**.
-
-* **Divieto assoluto di clonazione, copia o decompilazione:** Qualsiasi tentativo di reverse engineering, estrazione non autorizzata o clonazione del codice è severamente vietato.
-* **Tutela Legale:** Ogni violazione dei diritti d'autore o uso non autorizzato della proprietà intellettuale sarà perseguita a norma di legge in tutte le sedi competenti.
-* **Licenze Enterprise:** L'utilizzo commerciale, l'integrazione o l'acquisto della versione completa e non offuscata sono soggetti ad accordi di licenza diretta con l'autrice.
+> **AUTHOR & INTELLECTUAL PROPERTY OWNER:** Tiziana Maggio  
+> **All Rights Reserved.**
 
 ---
-### 🌐 Canali Ufficiali di Contatto
-* **Richiesta Licenze / Trattative:** [devlabsolutionstm888@gmail.com](mailto:devlabsolutionstm888@gmail.com)
-* **Piattaforma di Pagamento Diretto:** [PayPal.me / TizianaM383](https://www.paypal.me/tizianaM383)
 
-Copyright © 2026 Tiziana Maggio. All Rights Reserved.
+## 🔒 Overview & System Architecture
+**Transact & Etelia Core OS** is a sovereign, zero-dependency, and offline-first runtime workspace environment engineered for high-security enterprise operations.
+
+This repository serves as the official public showcase and evaluation environment, featuring:
+* **ULMA Shield Security:** AST-level obfuscation with active F12, DevTools inspection, and reverse-engineering protection.
+* **Worldwide Engine:** Built-in multi-language framework supporting 10 global locales (including LTR/RTL layouts).
+* **Network Sentinel & ULMA VPN:** Multi-hop encrypted routing concepts (AES-256) and public network validation.
+* **ESG Energy Tracker:** Sustainable software execution monitored at an ultra-low **0.002 kWh** energy footprint with **Zero Telemetry**.
+
+---
+
+## ⚠️ Legal Notice & Intellectual Property Protection
+This software, including its source code, proprietary algorithms, visual framework, **ULMA Shield**, and **Worldwide Engine**, represents original creative work and is the exclusive property of **Tiziana Maggio**.
+
+* **Strict Prohibition:** Any unauthorized copying, distribution, modification, decompilation, or reverse engineering of this software or its underlying components is strictly prohibited.
+* **Legal Enforcement:** Intellectual property violations or unlawful code extraction will be legally prosecuted to the fullest extent under international copyright laws.
+* **Commercial Licensing:** Access to the full, un-obfuscated core source code, kernel scripts, and custom integrations is granted exclusively via direct Enterprise Licensing.
+
+---
+
+## 🌐 Enterprise Inquiries & Direct Acquisition
+For commercial licenses, custom enterprise deployments, or partnership inquiries:
+
+* **Direct Email Contact:** [devlabsolutionstm888@gmail.com](mailto:devlabsolutionstm888@gmail.com)
+* **Direct Payment Gateway:** [PayPal.me / TizianaM383](https://www.paypal.me/tizianaM383)
+
+---
+
+*Copyright © 2026 Tiziana Maggio. All Rights Reserved.*
